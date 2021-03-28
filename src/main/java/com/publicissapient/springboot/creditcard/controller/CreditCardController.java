@@ -1,4 +1,4 @@
-package com.publicissapient.springboot.creditcard;
+package com.publicissapient.springboot.creditcard.controller;
 
 import com.publicissapient.springboot.creditcard.model.CreditCard;
 import com.publicissapient.springboot.creditcard.service.CreditCardService;
@@ -16,7 +16,7 @@ public class CreditCardController {
     @Autowired
     private CreditCardService creditCardService;
 
-    // Select, Insert, Delete, Update Operations for an Employee
+    // Select, Insert Operations for a Credit CARD
 
     @RequestMapping(value = "/creditcard/{id}", method = RequestMethod.GET)
     CreditCard getCreditCard(@PathVariable Integer id){
@@ -25,13 +25,13 @@ public class CreditCardController {
 
     @RequestMapping(value = "/creditcard", method = RequestMethod.POST)
     String addCreditCard(@RequestBody CreditCard employee){
-        CreditCard savedEmployee = creditCardService.save(employee);
+        CreditCard savedCreditCard = creditCardService.save(employee);
         return "SUCCESS";
     }
     // Select, Insert for List of Credit Cards
 
     @RequestMapping(value = "/creditcards", method = RequestMethod.GET)
-    List<CreditCard> getAllEmployee(){
+    List<CreditCard> getAllCreditCards(){
         return creditCardService.findAll();
     }
 
