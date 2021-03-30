@@ -32,15 +32,14 @@ public class CreditCardControllerTest {
     @Test
     public void testGetAllCreditCards() throws Exception {
         CreditCard creditCard = new CreditCard();
-        creditCard.setId(1);
-
+        creditCard.setId(1234567891234567891L);
         List<CreditCard> creditCardList = new ArrayList<>();
         creditCardList.add(creditCard);
 
         given(creditCardService.findAll()).willReturn(creditCardList);
 
-        this.mockMvc.perform(get("/creditCards")).andExpect(status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("$[0].id").value(1));
+        this.mockMvc.perform(get("/creditcards")).andExpect(status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$[0].id").value(12345678912345678L));
     }
 
 }
