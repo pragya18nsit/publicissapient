@@ -34,7 +34,7 @@ public class CreditCardControllerIntegrationTest {
         Assertions.assertTrue(
                 this.restTemplate
                         .withBasicAuth("admin", "nimda")
-                        .getForObject("http://localhost:" + port + "/creditcard/11111111111111111", CreditCard.class)
+                        .getForObject("http://localhost:" + port + "/creditcard/7220810501341782203", CreditCard.class)
                         .getBankname().equals("UBS BANK"));
 
     }

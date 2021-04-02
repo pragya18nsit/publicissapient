@@ -1,9 +1,11 @@
 package com.publicissapient.springboot.creditcard.controller;
 
+import com.publicissapient.springboot.creditcard.exception.CreditCardFailedLuhnException;
 import com.publicissapient.springboot.creditcard.exception.CreditCardNotFoundException;
 import com.publicissapient.springboot.creditcard.exception.ExceptionResponse;
 import com.publicissapient.springboot.creditcard.model.CreditCard;
 import com.publicissapient.springboot.creditcard.service.CreditCardService;
+import com.publicissapient.springboot.creditcard.utils.LuhnValidation;
 import org.h2.util.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,13 +31,20 @@ public class CreditCardController {
         Optional<CreditCard> creditCard = creditCardService.findById(id);
 
         if (!creditCard.isPresent())
-            throw new CreditCardNotFoundException("id-" + id);
+            throw new CreditCardNotFoundException("Credit card with id-" + id + " not found");
 
         return  creditCard.get();
     }
 
     @RequestMapping(value = "/creditcard", method = RequestMethod.POST)
     CreditCard addCreditCard(@Valid @RequestBody CreditCard creditCard){
+        //Validate credit card id
+        Long creditCardId = creditCard.getId();
+
+        if(!LuhnValidation.Check(creditCardId.toString())){
+            
+            throw new CreditCardFailedLuhnException("Credit card with id- " + creditCardId + " failed luhn check validation");
+        }
 
         //Set current date and expiry dates
         Date currentDate = new Date();
@@ -44,7 +53,6 @@ public class CreditCardController {
         Date expiryDate=new Date(ltime);
         creditCard.setExpiry_date(expiryDate);
         creditCard.setBalance(0);
-
         return creditCardService.save(creditCard);
 
     }
@@ -59,6 +67,11 @@ public class CreditCardController {
     List<CreditCard>  addAllCreditCards( @RequestBody List<CreditCard> creditCardList){
         for(CreditCard creditCard: creditCardList){
             log.info("value of id : {} ", creditCard.getId());
+            Long creditCardId = creditCard.getId();
+            if(!LuhnValidation.Check(creditCardId.toString())){
+                throw new CreditCardFailedLuhnException("Credit card with id- " + creditCardId + " failed luhn check validation");
+            }
+
             //Set current date and expiry dates
             Date currentDate = new Date();
             creditCard.setIssue_date(currentDate);

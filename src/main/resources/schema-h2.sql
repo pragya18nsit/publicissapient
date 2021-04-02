@@ -1,6 +1,6 @@
 CREATE TABLE CREDITCARD
         (
-        id BIGINT(17) NOT NULL,
+        id BIGINT(19) NOT NULL,
         name VARCHAR2(50) NOT NULL,
         cvv NUMBER(5) NOT NULL,
         issue_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
