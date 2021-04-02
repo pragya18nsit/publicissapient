@@ -47,6 +47,7 @@ public class CreditCard {
 
 
     @Column(name = "cvv")
+    @NotNull
     Integer cvv;
 
 
@@ -84,6 +85,7 @@ public class CreditCard {
 
 
     @Column(name = "cardtype")
+    @NotNull
     String cardtype;
 
     public String getCardtype() {
@@ -108,6 +110,7 @@ public class CreditCard {
     }
 
     @Column(name = "currency")
+    @NotNull
     String currency;
 
     public String getCurrency() {
@@ -119,6 +122,7 @@ public class CreditCard {
     }
 
     @Column(name = "bankname")
+    @NotNull
     String bankname;
 
 
