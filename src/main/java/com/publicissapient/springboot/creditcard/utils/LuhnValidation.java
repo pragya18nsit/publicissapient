@@ -1,5 +1,8 @@
 package com.publicissapient.springboot.creditcard.utils;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public class LuhnValidation
 {
     public static boolean Check(String ccNumber)
@@ -20,6 +23,8 @@ public class LuhnValidation
             sum += n;
             alternate = !alternate;
         }
+        log.info("--luhn check");
+        log.info(String.valueOf(sum%10));
         return (sum % 10 == 0);
     }
 }

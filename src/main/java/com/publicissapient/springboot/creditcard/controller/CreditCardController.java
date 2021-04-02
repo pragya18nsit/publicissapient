@@ -41,8 +41,8 @@ public class CreditCardController {
         //Validate credit card id
         Long creditCardId = creditCard.getId();
 
-        if(!LuhnValidation.Check(creditCardId.toString())){
-            
+        if(LuhnValidation.Check(creditCardId.toString())){
+
             throw new CreditCardFailedLuhnException("Credit card with id- " + creditCardId + " failed luhn check validation");
         }
 
@@ -68,7 +68,7 @@ public class CreditCardController {
         for(CreditCard creditCard: creditCardList){
             log.info("value of id : {} ", creditCard.getId());
             Long creditCardId = creditCard.getId();
-            if(!LuhnValidation.Check(creditCardId.toString())){
+            if(LuhnValidation.Check(creditCardId.toString())){
                 throw new CreditCardFailedLuhnException("Credit card with id- " + creditCardId + " failed luhn check validation");
             }
 
