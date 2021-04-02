@@ -1,2 +1,2 @@
-INSERT INTO CREDITCARD (id, name, cvv, issue_date,expiry_date, bankname, cardtype, balance, currency) VALUES (12345678912345678L, 'pragya', 123, CURRENT_TIMESTAMP(), DATEADD('YEAR',3, CURRENT_DATE), 'UBS BANK', 'SILVER TRAVEL', 900, '$');
-INSERT INTO CREDITCARD (id, name, cvv, issue_date, expiry_date, bankname, cardtype, balance, currency) VALUES (12345678912345688L, 'gupta', 123, CURRENT_TIMESTAMP(), DATEADD('YEAR',3, CURRENT_DATE), 'UBS BANK', 'SILVER TRAVEL', 900, '$');
+INSERT INTO CREDITCARD (id, name, cvv, issue_date, expiry_date, bankname, cardtype, balance, currency) VALUES (11111111111111111L, 'pragya', 123, CURRENT_TIMESTAMP(), DATEADD('YEAR',3, CURRENT_DATE), 'UBS BANK', 'SILVER TRAVEL', 900, '$');
+INSERT INTO CREDITCARD (id, name, cvv, issue_date, expiry_date, bankname, cardtype, balance, currency) VALUES (12345678912345688L, 'gupta', 123, CURRENT_TIMESTAMP(), DATEADD('YEAR',3, CURRENT_DATE), 'UBS1 BANK', 'SILVER TRAVEL', 900, '$');

@@ -10,6 +10,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
@@ -29,6 +30,7 @@ public class CreditCardControllerTest {
     @MockBean
     CreditCardService creditCardService;
 
+    @WithMockUser(username="admin")
     @Test
     public void testGetAllCreditCards() throws Exception {
         CreditCard creditCard = new CreditCard();
@@ -39,7 +41,7 @@ public class CreditCardControllerTest {
         given(creditCardService.findAll()).willReturn(creditCardList);
 
         this.mockMvc.perform(get("/creditcards")).andExpect(status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("$[0].id").value(12345678912345678L));
+                .andExpect(MockMvcResultMatchers.jsonPath("$[0].id").value(1234567891234567891L));
     }
 
 }
