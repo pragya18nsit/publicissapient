@@ -35,7 +35,7 @@ public class CreditCardControllerIntegrationTest {
                 this.restTemplate
                         .withBasicAuth("admin", "nimda")
                         .getForObject("http://localhost:" + port + "/creditcard/7220810501341782203", CreditCard.class)
-                        .getBankname().equals("UBS BANK"));
+                        .getBankName().equals("UBS BANK"));
 
     }
 
@@ -43,7 +43,6 @@ public class CreditCardControllerIntegrationTest {
     public void testAllCreditCards() {
 
         CreditCard results = this.restTemplate.getForObject("http://localhost:" + port + "/creditcards", CreditCard.class);
-        log.info(results.getBankname());
         assertTrue(
                 this.restTemplate
                         .withBasicAuth("admin", "nimda")

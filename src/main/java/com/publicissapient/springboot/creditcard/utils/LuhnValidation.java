@@ -24,7 +24,6 @@ public class LuhnValidation
             alternate = !alternate;
         }
         log.info("--luhn check");
-        log.info(String.valueOf(sum%10));
 
         return (sum % 10 == 0);
     }

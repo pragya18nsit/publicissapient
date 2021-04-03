@@ -6,6 +6,7 @@ import com.publicissapient.springboot.creditcard.model.CreditCard;
 import com.publicissapient.springboot.creditcard.service.CreditCardService;
 import com.publicissapient.springboot.creditcard.utils.LuhnValidation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -19,8 +20,13 @@ public class CreditCardController {
     @Autowired
     private CreditCardService creditCardService;
 
-    // Select, Insert Operations for a Credit CARD
+    @Value("${spring.creditcard.expiryDays}")
+    private Integer expiryDays;
 
+    @Value("${spring.creditcard.defaultBalance}")
+    private Integer defaultBalance;
+
+    // Select, Insert Operations for a Credit CARD
     @RequestMapping(value = "/creditcard/{id}", method = RequestMethod.GET)
     CreditCard getCreditCard(@PathVariable Long id){
 
@@ -35,6 +41,9 @@ public class CreditCardController {
     @RequestMapping(value = "/creditcard", method = RequestMethod.POST)
     CreditCard addCreditCard(@Valid @RequestBody CreditCard creditCard){
         //Validate credit card id
+        long ltime;
+        Date currentDate, expiryDate;
+
         Long creditCardId = creditCard.getId();
         if(!LuhnValidation.Check(creditCardId.toString())){
 
@@ -42,12 +51,12 @@ public class CreditCardController {
         }
 
         //Set current date and expiry dates
-        Date currentDate = new Date();
-        creditCard.setIssue_date(currentDate);
-        long ltime=currentDate.getTime()+3*24*60*60*1000;
-        Date expiryDate=new Date(ltime);
-        creditCard.setExpiry_date(expiryDate);
-        creditCard.setBalance(1);
+        currentDate = new Date();
+        creditCard.setIssueDate(currentDate);
+        ltime=currentDate.getTime()+expiryDays;
+        expiryDate=new Date(ltime);
+        creditCard.setExpiryDate(expiryDate);
+        creditCard.setBalance(defaultBalance);
         return creditCardService.save(creditCard);
 
     }
@@ -60,6 +69,9 @@ public class CreditCardController {
 
     @RequestMapping(value = "/creditcards", method = RequestMethod.POST)
     List<CreditCard>  addAllCreditCards( @RequestBody List<CreditCard> creditCardList){
+        long ltime;
+        Date currentDate, expiryDate;
+
         for(CreditCard creditCard: creditCardList){
             log.info("value of id : {} ", creditCard.getId());
             Long creditCardId = creditCard.getId();
@@ -68,12 +80,12 @@ public class CreditCardController {
             }
 
             //Set current date and expiry dates
-            Date currentDate = new Date();
-            creditCard.setIssue_date(currentDate);
-            long ltime=currentDate.getTime()+3*24*60*60*1000;
-            Date expiryDate=new Date(ltime);
-            creditCard.setExpiry_date(expiryDate);
-            creditCard.setBalance(0);
+            currentDate = new Date();
+            creditCard.setIssueDate(currentDate);
+            ltime = currentDate.getTime()+expiryDays;
+            expiryDate = new Date(ltime);
+            creditCard.setExpiryDate(expiryDate);
+            creditCard.setBalance(defaultBalance);
 
         }
         return creditCardService.saveAll(creditCardList);

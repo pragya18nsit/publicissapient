@@ -14,7 +14,7 @@ import java.math.BigInteger;
 import java.util.Date;
 
 @Entity
-@Table(name = "CREDITCARD")
+@Table(name = "credit_card")
 public class CreditCard {
 
     @Column(name = "id")
@@ -62,38 +62,38 @@ public class CreditCard {
 
 
     @Column(name = "issue_date")
-    Date issue_date;
+    Date issueDate;
 
-    public Date getIssue_date() {
-        return issue_date;
+    public Date getIssueDate() {
+        return issueDate;
     }
 
-    public void setIssue_date(Date issue_date) {
-        this.issue_date = issue_date;
+    public void setIssueDate(Date issueDate) {
+        this.issueDate = issueDate;
     }
 
     @Column(name = "expiry_date")
-    Date expiry_date;
+    Date expiryDate;
 
-    public Date getExpiry_date() {
-        return expiry_date;
+    public Date getExpiryDate() {
+        return expiryDate;
     }
 
-    public void setExpiry_date(Date expiry_date) {
-        this.expiry_date = expiry_date;
+    public void setExpiryDate(Date expiryDate) {
+        this.expiryDate = expiryDate;
     }
 
 
-    @Column(name = "cardtype")
+    @Column(name = "card_type")
     @NotNull
-    String cardtype;
+    String cardType;
 
-    public String getCardtype() {
-        return cardtype;
+    public String getCardType() {
+        return cardType;
     }
 
-    public void setCardtype(String cardtype) {
-        this.cardtype = cardtype;
+    public void setCardType(String  cardType) {
+        this.cardType = cardType;
     }
 
 
@@ -121,17 +121,17 @@ public class CreditCard {
         this.currency = currency;
     }
 
-    @Column(name = "bankname")
+    @Column(name = "bank_name")
     @NotNull
-    String bankname;
+    String bankName;
 
 
-    public String getBankname() {
-        return bankname;
+    public String getBankName() {
+        return bankName;
     }
 
-    public void setBankname(String bankname) {
-        this.bankname = bankname;
+    public void setBankName(String bankname) {
+        this.bankName = bankName;
     }
 
 
