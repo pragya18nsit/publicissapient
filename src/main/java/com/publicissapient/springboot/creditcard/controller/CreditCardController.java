@@ -40,8 +40,10 @@ public class CreditCardController {
     CreditCard addCreditCard(@Valid @RequestBody CreditCard creditCard){
         //Validate credit card id
         Long creditCardId = creditCard.getId();
-
-        if(LuhnValidation.Check(creditCardId.toString())){
+        System.out.print("--luhn check");
+        System.out.print(creditCardId.toString());
+        System.out.print(LuhnValidation.Check(creditCardId.toString()));
+        if(!LuhnValidation.Check(creditCardId.toString())){
 
             throw new CreditCardFailedLuhnException("Credit card with id- " + creditCardId + " failed luhn check validation");
         }
@@ -52,7 +54,7 @@ public class CreditCardController {
         long ltime=currentDate.getTime()+3*24*60*60*1000;
         Date expiryDate=new Date(ltime);
         creditCard.setExpiry_date(expiryDate);
-        creditCard.setBalance(0);
+        creditCard.setBalance(1);
         return creditCardService.save(creditCard);
 
     }
@@ -68,7 +70,7 @@ public class CreditCardController {
         for(CreditCard creditCard: creditCardList){
             log.info("value of id : {} ", creditCard.getId());
             Long creditCardId = creditCard.getId();
-            if(LuhnValidation.Check(creditCardId.toString())){
+            if(!LuhnValidation.Check(creditCardId.toString())){
                 throw new CreditCardFailedLuhnException("Credit card with id- " + creditCardId + " failed luhn check validation");
             }
 
