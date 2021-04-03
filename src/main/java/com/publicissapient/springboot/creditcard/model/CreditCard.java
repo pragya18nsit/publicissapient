@@ -130,10 +130,8 @@ public class CreditCard {
         return bankName;
     }
 
-    public void setBankName(String bankname) {
+    public void setBankName(String bankName) {
         this.bankName = bankName;
     }
-
-
 
 }
