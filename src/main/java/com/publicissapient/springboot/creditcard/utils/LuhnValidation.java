@@ -26,9 +26,6 @@ public class LuhnValidation
         log.info("--luhn check");
         log.info(String.valueOf(sum%10));
 
-
-        System.out.print("--luhn check");
-        System.out.print(String.valueOf(sum%10));
         return (sum % 10 == 0);
     }
 }

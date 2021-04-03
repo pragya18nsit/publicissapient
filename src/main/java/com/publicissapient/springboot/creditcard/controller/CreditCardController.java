@@ -2,14 +2,10 @@ package com.publicissapient.springboot.creditcard.controller;
 
 import com.publicissapient.springboot.creditcard.exception.CreditCardFailedLuhnException;
 import com.publicissapient.springboot.creditcard.exception.CreditCardNotFoundException;
-import com.publicissapient.springboot.creditcard.exception.ExceptionResponse;
 import com.publicissapient.springboot.creditcard.model.CreditCard;
 import com.publicissapient.springboot.creditcard.service.CreditCardService;
 import com.publicissapient.springboot.creditcard.utils.LuhnValidation;
-import org.h2.util.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -40,9 +36,6 @@ public class CreditCardController {
     CreditCard addCreditCard(@Valid @RequestBody CreditCard creditCard){
         //Validate credit card id
         Long creditCardId = creditCard.getId();
-        System.out.print("--luhn check");
-        System.out.print(creditCardId.toString());
-        System.out.print(LuhnValidation.Check(creditCardId.toString()));
         if(!LuhnValidation.Check(creditCardId.toString())){
 
             throw new CreditCardFailedLuhnException("Credit card with id- " + creditCardId + " failed luhn check validation");
