@@ -1,4 +1,4 @@
-package com.publicissapient.springboot.creditcard;
+package com.publicissapient.springboot.creditcard.integration;
 
 import com.publicissapient.springboot.creditcard.model.CreditCard;
 import lombok.extern.slf4j.Slf4j;

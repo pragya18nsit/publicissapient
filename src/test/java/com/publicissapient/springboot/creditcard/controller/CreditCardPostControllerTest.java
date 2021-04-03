@@ -1,4 +1,4 @@
-package com.publicissapient.springboot.creditcard;
+package com.publicissapient.springboot.creditcard.controller;
 
 import java.util.ArrayList;
 import java.util.List;
