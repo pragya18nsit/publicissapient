@@ -47,19 +47,19 @@ PublicisSapient
 |		│	│	 │	└── CustomizedResponseEntityExceptionHandler.java
 |		│	│	 │	└── ExceptionResponse.java
 |       │   │    └── model
-|       │   │    │    	└── CreditCard.java
+|       │   │    │   └── CreditCard.java
 |		│	│	 └── security
-|		│	│	 │		└── ApplicationSecurityConfig.java
+|		│	│	 │	 └── ApplicationSecurityConfig.java
 |		│	│	 └── service
-|		│	│	 │		└── CreditCardService.java
+|		│	│	 │	 └── CreditCardService.java
 |		│	│	 └── utils
-|		│	│	 │		└── LuhnValidation.java
+|		│	│	 │	 └── LuhnValidation.java
 |		│	│	 └── CreditCardApp.java
 |       │   │       
 |		│   └── resources
 |       └── test	
 |			└── java
-|				  └── com.publicissapient.springboot.creditcard
+|				└── com.publicissapient.springboot.creditcard
 |					└── controller
 |						└── CreditCardGetControllerTest.java
 |						└── CreditCardPostControllerTest.java
