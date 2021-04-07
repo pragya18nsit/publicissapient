@@ -86,38 +86,5 @@ public class CreditCardGetControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$[0].id").value(7220810501341782203L));
     }
 
-    @Test
-    public void testPostCreditCard_Unauthorized() throws Exception {
-        CreditCard creditCard = new CreditCard();
-        creditCard.setId(7220810501341782203L);
-        List<CreditCard> creditCardList = new ArrayList<>();
-        creditCardList.add(creditCard);
-
-        given(creditCardService.save(creditCard)).willReturn(creditCard);
-
-        this.mockMvc.perform(post("/creditcard")).andExpect(status().isUnauthorized());
-    }
-
-    @WithMockUser(username="admin")
-    @Test
-    public void testPostCreditCard() throws Exception {
-        CreditCard creditCard = new CreditCard();
-        creditCard.setId(7220810501341782203L);
-        creditCard.setCvv(123);
-        creditCard.setBankName("AXIS BANK");
-        creditCard.setCardType("GOLD");
-        creditCard.setCurrency("$");
-
-        List<CreditCard> creditCardList = new ArrayList<>();
-        creditCardList.add(creditCard);
-
-        given(creditCardService.save(creditCard)).willReturn(creditCard);
-
-        this.mockMvc.perform(post("/creditcard").content(objectMapper.writeValueAsString(creditCard))
-                .contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
-    }
-
-
-
 
 }
