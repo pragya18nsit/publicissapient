@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @Slf4j
-@ResponseStatus(HttpStatus.BAD_REQUEST)
+@ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
 public class CreditCardFailedLuhnException extends RuntimeException {
 
     public CreditCardFailedLuhnException(String exception) {

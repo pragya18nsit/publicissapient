@@ -123,7 +123,7 @@ public class CreditCardPostControllerIntegrationTest {
         ResponseEntity<String> result =  this.restTemplate
                 .exchange(uri, HttpMethod.POST, request, String.class);
 
-        Assertions.assertEquals(404, result.getStatusCodeValue());
+        Assertions.assertEquals(422, result.getStatusCodeValue());
 
     }
 }
