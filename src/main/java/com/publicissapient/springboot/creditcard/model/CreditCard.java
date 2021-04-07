@@ -134,4 +134,16 @@ public class CreditCard {
         this.bankName = bankName;
     }
 
+    @Column(name = "card_limit")
+    Integer cardLimit;
+
+
+    public Integer getCardLimit() {
+        return cardLimit;
+    }
+
+    public void setCardLimit(Integer cardLimit) {
+        this.cardLimit = cardLimit;
+    }
+
 }

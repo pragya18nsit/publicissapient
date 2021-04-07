@@ -46,7 +46,7 @@ public class CreditCardPostControllerTest {
 
         given(creditCardService.save(creditCard)).willReturn(creditCard);
 
-        this.mockMvc.perform(post("/creditcard")).andExpect(status().isUnauthorized());
+        this.mockMvc.perform(post("/creditcards")).andExpect(status().isUnauthorized());
     }
 
 
@@ -65,7 +65,7 @@ public class CreditCardPostControllerTest {
 
         given(creditCardService.save(creditCard)).willReturn(creditCard);
 
-        this.mockMvc.perform(post("/creditcard").content(objectMapper.writeValueAsString(creditCard))
+        this.mockMvc.perform(post("/creditcards").content(objectMapper.writeValueAsString(creditCard))
                 .contentType(MediaType.APPLICATION_JSON)).andExpect(status().is4xxClientError())
                 .andExpect(MockMvcResultMatchers.jsonPath("message").value("Validation Failed"));;
     }
@@ -85,7 +85,7 @@ public class CreditCardPostControllerTest {
 
         given(creditCardService.save(creditCard)).willReturn(creditCard);
 
-        this.mockMvc.perform(post("/creditcard").content(objectMapper.writeValueAsString(creditCard))
+        this.mockMvc.perform(post("/creditcards").content(objectMapper.writeValueAsString(creditCard))
                 .contentType(MediaType.APPLICATION_JSON)).andExpect(status().is4xxClientError())
                 .andExpect(MockMvcResultMatchers.jsonPath("message").value("Validation Failed"));;
     }
@@ -105,7 +105,7 @@ public class CreditCardPostControllerTest {
 
         given(creditCardService.save(creditCard)).willReturn(creditCard);
 
-        this.mockMvc.perform(post("/creditcard").content(objectMapper.writeValueAsString(creditCard))
+        this.mockMvc.perform(post("/creditcards").content(objectMapper.writeValueAsString(creditCard))
                 .contentType(MediaType.APPLICATION_JSON)).andExpect(status().is4xxClientError())
                 .andExpect(MockMvcResultMatchers.jsonPath("message").value("Validation Failed"));;
     }
@@ -125,7 +125,7 @@ public class CreditCardPostControllerTest {
 
         given(creditCardService.save(creditCard)).willReturn(creditCard);
 
-        this.mockMvc.perform(post("/creditcard").content(objectMapper.writeValueAsString(creditCard))
+        this.mockMvc.perform(post("/creditcards").content(objectMapper.writeValueAsString(creditCard))
                 .contentType(MediaType.APPLICATION_JSON)).andExpect(status().is4xxClientError())
                 .andExpect(MockMvcResultMatchers.jsonPath("message").value("Validation Failed"));;
     }
@@ -145,7 +145,7 @@ public class CreditCardPostControllerTest {
 
         given(creditCardService.save(creditCard)).willReturn(creditCard);
 
-        this.mockMvc.perform(post("/creditcard").content(objectMapper.writeValueAsString(creditCard))
+        this.mockMvc.perform(post("/creditcards").content(objectMapper.writeValueAsString(creditCard))
                 .contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
     }
 

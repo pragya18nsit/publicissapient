@@ -30,9 +30,6 @@ public class CreditCardGetControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
-    @Autowired
-    private ObjectMapper objectMapper;
-
     @MockBean
     CreditCardService creditCardService;
 
@@ -44,7 +41,7 @@ public class CreditCardGetControllerTest {
 
         given(creditCardService.findById(7220810501341782203L)).willReturn(java.util.Optional.of(creditCard));
 
-        this.mockMvc.perform(get("/creditcard/7220810501341782203L")).andExpect(status().isUnauthorized());
+        this.mockMvc.perform(get("/creditcards/7220810501341782203L")).andExpect(status().isUnauthorized());
     }
 
     @WithMockUser(username="admin")
@@ -55,36 +52,11 @@ public class CreditCardGetControllerTest {
         creditCard.setBankName("UBS BANK");
 
         given(creditCardService.findById(7220810501341782203L)).willReturn(java.util.Optional.of(creditCard));
-        this.mockMvc.perform(get("/creditcard/7220810501341782203")).andExpect(status().isOk())
+        this.mockMvc.perform(get("/creditcards/7220810501341782203")).andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("bankName").value("UBS BANK"));
 
     }
 
-    @Test
-    public void testGetAllCreditCards_Unauthorized() throws Exception {
-        CreditCard creditCard = new CreditCard();
-        creditCard.setId(7220810501341782203L);
-        List<CreditCard> creditCardList = new ArrayList<>();
-        creditCardList.add(creditCard);
-
-        given(creditCardService.findAll()).willReturn(creditCardList);
-
-        this.mockMvc.perform(get("/creditcards")).andExpect(status().isUnauthorized());
-    }
-
-    @WithMockUser(username="admin")
-    @Test
-    public void testGetAllCreditCards() throws Exception {
-        CreditCard creditCard = new CreditCard();
-        creditCard.setId(7220810501341782203L);
-        List<CreditCard> creditCardList = new ArrayList<>();
-        creditCardList.add(creditCard);
-
-        given(creditCardService.findAll()).willReturn(creditCardList);
-
-        this.mockMvc.perform(get("/creditcards")).andExpect(status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("$[0].id").value(7220810501341782203L));
-    }
 
 
 }

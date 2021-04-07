@@ -29,6 +29,7 @@ public class CreditCardPostControllerIntegrationTest {
     @Autowired
     private TestRestTemplate restTemplate;
 
+
     @Test
     public void testPostCreditCard() throws URISyntaxException {
         CreditCard creditCard = new CreditCard();
@@ -43,7 +44,7 @@ public class CreditCardPostControllerIntegrationTest {
         HttpHeaders headers = new HttpHeaders();
 
         headers.setBasicAuth("admin", "nimda");
-        final String baseUrl = "http://localhost:"+ port +"/creditcard";
+        final String baseUrl = "http://localhost:"+ port +"/creditcards";
         URI uri = new URI(baseUrl);
         HttpEntity<CreditCard> request = new HttpEntity<>(creditCard, headers);
         ResponseEntity<String> result =  this.restTemplate
@@ -68,7 +69,7 @@ public class CreditCardPostControllerIntegrationTest {
         HttpHeaders headers = new HttpHeaders();
 
         headers.setBasicAuth("admin", "nimda");
-        final String baseUrl = "http://localhost:"+ port +"/creditcard";
+        final String baseUrl = "http://localhost:"+ port +"/creditcards";
         URI uri = new URI(baseUrl);
         HttpEntity<CreditCard> request = new HttpEntity<>(creditCard, headers);
         ResponseEntity<String> result =  this.restTemplate
@@ -92,7 +93,7 @@ public class CreditCardPostControllerIntegrationTest {
         HttpHeaders headers = new HttpHeaders();
 
         headers.setBasicAuth("admin", "nimda");
-        final String baseUrl = "http://localhost:"+ port +"/creditcard";
+        final String baseUrl = "http://localhost:"+ port +"/creditcards";
         URI uri = new URI(baseUrl);
         HttpEntity<CreditCard> request = new HttpEntity<>(creditCard, headers);
         ResponseEntity<String> result =  this.restTemplate
@@ -116,7 +117,7 @@ public class CreditCardPostControllerIntegrationTest {
         HttpHeaders headers = new HttpHeaders();
 
         headers.setBasicAuth("admin", "nimda");
-        final String baseUrl = "http://localhost:"+ port +"/creditcard";
+        final String baseUrl = "http://localhost:"+ port +"/creditcards";
         URI uri = new URI(baseUrl);
         HttpEntity<CreditCard> request = new HttpEntity<>(creditCard, headers);
         ResponseEntity<String> result =  this.restTemplate

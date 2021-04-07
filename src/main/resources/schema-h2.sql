@@ -8,6 +8,7 @@ CREATE TABLE credit_card
         bank_name VARCHAR(40)  NOT NULL,
         card_type VARCHAR(20),
         balance NUMBER(10) NOT NULL,
+        card_limit NUMBER(10) NOT NULL,
         currency VARCHAR(1) NOT NULL,
         PRIMARY KEY(id)
         );

@@ -32,7 +32,6 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 
     }
 
-    //This section has been replaced by the configurations in application.properties file
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder authentication)
             throws Exception

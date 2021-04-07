@@ -41,7 +41,7 @@ public class CreditCardGetControllerIntegrationTest {
         Assertions.assertTrue(
                 this.restTemplate
                         .withBasicAuth(userName, userPassword)
-                        .getForObject("http://localhost:" + port + "/creditcard/7220810501341782203", CreditCard.class)
+                        .getForObject("http://localhost:" + port + "/creditcards/7220810501341782203", CreditCard.class)
                         .getBankName().equals("UBS BANK"));
 
     }
@@ -56,29 +56,6 @@ public class CreditCardGetControllerIntegrationTest {
                         .getForObject("http://localhost:" + port + "/creditcards", List.class).size() == 2);
     }
 
-    @Test
-    public void testPostCreditCard() throws URISyntaxException {
-        CreditCard creditCard = new CreditCard();
-        creditCard.setId(8170573272878250872L);
-        creditCard.setName("gupta");
-
-        creditCard.setCvv(123);
-        creditCard.setBankName("AXIS BANK");
-        creditCard.setCardType("GOLD");
-        creditCard.setCurrency("$");
-
-        HttpHeaders headers = new HttpHeaders();
-
-        headers.setBasicAuth("admin", "nimda");
-        final String baseUrl = "http://localhost:"+ port +"/creditcard";
-        URI uri = new URI(baseUrl);
-        HttpEntity<CreditCard> request = new HttpEntity<>(creditCard, headers);
-        ResponseEntity<String> result =  this.restTemplate
-                .exchange(uri, HttpMethod.POST, request, String.class);
-
-        Assertions.assertEquals(200, result.getStatusCodeValue());
-
-    }
 
 
 }
